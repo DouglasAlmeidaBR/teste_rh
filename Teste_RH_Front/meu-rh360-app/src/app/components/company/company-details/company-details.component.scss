@@ -1,0 +1,145 @@
+.company-details-container {
+  padding: 25px 30px; 
+  background-color: #f8f9fa; 
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+  margin: 20px; 
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px; 
+  border-bottom: 1px solid #e9ecef; 
+  padding-bottom: 20px;
+}
+
+.header h2 {
+  margin: 0;
+  color: #343a40; 
+  font-size: 1.8em; 
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 10px; 
+}
+
+.btn-action {
+  background-color: #ffffff;
+  color: #007bff; 
+  border: 1px solid #007bff;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  display: flex; 
+  align-items: center;
+  gap: 5px; 
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #007bff;
+    color: #ffffff;
+  }
+}
+
+.company-info-card {
+  background-color: #ffffff; 
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); 
+}
+
+.info-group {
+  display: flex;
+  flex-wrap: wrap; 
+  margin-bottom: 25px; 
+  border-bottom: 1px dashed #e0e0e0; 
+  padding-bottom: 20px;
+
+  &:last-child {
+    border-bottom: none; 
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+.info-item {
+  flex: 1 1 30%; 
+  min-width: 280px; 
+  margin-right: 20px;
+  margin-bottom: 15px; 
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  label {
+    font-weight: 500; 
+    color: #6c757d; 
+    display: block;
+    margin-bottom: 8px; 
+    font-size: 0.9em;
+    text-transform: uppercase; 
+  }
+
+  p {
+    margin: 0;
+    color: #343a40; 
+    font-size: 1.15em; 
+    line-height: 1.5;
+  }
+}
+
+.info-group.full-width-address .info-item.full-width {
+  flex: 1 1 100%; 
+  margin-right: 0;
+}
+
+.loading-message,
+.alert {
+  text-align: center;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.loading-message {
+  background-color: #e2f0fe;
+  color: #0056b3;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+
+@media (max-width: 992px) {
+  .info-item {
+    flex: 1 1 45%; 
+  }
+}
+
+@media (max-width: 768px) {
+  .info-item {
+    flex: 1 1 100%; 
+    margin-right: 0;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .actions {
+    flex-wrap: wrap;
+    margin-top: 15px;
+  }
+  .btn-action {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}

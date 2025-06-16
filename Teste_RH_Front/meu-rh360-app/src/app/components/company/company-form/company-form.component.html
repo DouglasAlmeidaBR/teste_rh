@@ -1,0 +1,126 @@
+<div class="company-form-container">
+  <div class="modal-header">
+    <h4 class="modal-title">Editar empresa</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="companyType">Tipo de empresa*</label>
+        <input type="text" formControlName="companyType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['companyType'].errors }" />
+        <div *ngIf="submitted && f['companyType'].errors" class="invalid-feedback">
+          <div *ngIf="f['companyType'].errors['required']">Tipo de empresa é obrigatório.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="companyName">Nome da empresa*</label>
+        <input type="text" formControlName="companyName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['companyName'].errors }" />
+        <div *ngIf="submitted && f['companyName'].errors" class="invalid-feedback">
+          <div *ngIf="f['companyName'].errors['required']">Nome da empresa é obrigatório.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="documentNumber">CNPJ da empresa*</label>
+        <input type="text" formControlName="documentNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['documentNumber'].errors }" />
+        <div *ngIf="submitted && f['documentNumber'].errors" class="invalid-feedback">
+          <div *ngIf="f['documentNumber'].errors['required']">CNPJ é obrigatório.</div>
+          <div *ngIf="f['documentNumber'].errors['pattern']">CNPJ inválido (apenas números, 14 dígitos).</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="administratorName">Nome do administrador*</label>
+        <input type="text" formControlName="administratorName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['administratorName'].errors }" />
+        <div *ngIf="submitted && f['administratorName'].errors" class="invalid-feedback">
+          <div *ngIf="f['administratorName'].errors['required']">Nome do administrador é obrigatório.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="administratorDocumentNumber">CPF do administrador*</label>
+        <input type="text" formControlName="administratorDocumentNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['administratorDocumentNumber'].errors }" />
+        <div *ngIf="submitted && f['administratorDocumentNumber'].errors" class="invalid-feedback">
+          <div *ngIf="f['administratorDocumentNumber'].errors['required']">CPF é obrigatório.</div>
+          <div *ngIf="f['administratorDocumentNumber'].errors['pattern']">CPF inválido (apenas números, 11 dígitos).</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail*</label>
+        <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+          <div *ngIf="f['email'].errors['required']">Email é obrigatório.</div>
+          <div *ngIf="f['email'].errors['email']">Email inválido.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="mobilePhone">Celular*</label>
+        <input type="text" formControlName="mobilePhone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['mobilePhone'].errors }" />
+        <div *ngIf="submitted && f['mobilePhone'].errors" class="invalid-feedback">
+          <div *ngIf="f['mobilePhone'].errors['required']">Celular é obrigatório.</div>
+        </div>
+      </div>
+
+      <div formGroupName="address">
+        <div class="form-group">
+          <label for="zipCode">CEP*</label>
+          <input type="text" formControlName="zipCode" class="form-control" (blur)="onZipCodeChange($event)" [ngClass]="{ 'is-invalid': submitted && a['zipCode'].errors }" />
+          <div *ngIf="submitted && a['zipCode'].errors" class="invalid-feedback">
+            <div *ngIf="a['zipCode'].errors['required']">CEP é obrigatório.</div>
+            <div *ngIf="a['zipCode'].errors['pattern']">CEP inválido (apenas números, 8 dígitos).</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="address">Endereço*</label>
+          <input type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && a['address'].errors }" />
+          <div *ngIf="submitted && a['address'].errors" class="invalid-feedback">
+            <div *ngIf="a['address'].errors['required']">Endereço é obrigatório.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="neighborhood">Bairro*</label>
+          <input type="text" formControlName="neighborhood" class="form-control" [ngClass]="{ 'is-invalid': submitted && a['neighborhood'].errors }" />
+          <div *ngIf="submitted && a['neighborhood'].errors" class="invalid-feedback">
+            <div *ngIf="a['neighborhood'].errors['required']">Bairro é obrigatório.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="state">Estado*</label>
+          <input type="text" formControlName="state" class="form-control" [ngClass]="{ 'is-invalid': submitted && a['state'].errors }" />
+          <div *ngIf="submitted && a['state'].errors" class="invalid-feedback">
+            <div *ngIf="a['state'].errors['required']">Estado é obrigatório.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="city">Cidade*</label>
+          <input type="text" formControlName="city" class="form-control" [ngClass]="{ 'is-invalid': submitted && a['city'].errors }" />
+          <div *ngIf="submitted && a['city'].errors" class="invalid-feedback">
+            <div *ngIf="a['city'].errors['required']">Cidade é obrigatória.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="addressComplement">Complemento</label>
+          <input type="text" formControlName="addressComplement" class="form-control" />
+        </div>
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+        {{ errorMessage }}
+      </div>
+      <div *ngIf="successMessage" class="alert alert-success mt-3">
+        {{ successMessage }}
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+        <button type="submit" [disabled]="loading" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Salvar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

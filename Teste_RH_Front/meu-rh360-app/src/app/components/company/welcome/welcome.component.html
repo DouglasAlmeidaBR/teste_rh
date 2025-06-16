@@ -1,0 +1,53 @@
+<div class="welcome-container">
+  <div class="sidebar">
+    <div class="logo-sidebar">
+    </div>
+    <nav>
+      <ul class="main-menu">
+        <li><a routerLink="/welcome" routerLinkActive="active">Empresa</a></li>
+        <li *ngIf="isCompanyConfigured">
+          <a routerLink="/company-details" routerLinkActive="active">Config. da empresa</a>
+          <ul class="sub-menu">
+            <li><a routerLink="/company-details" routerLinkActive="active">Minha empresa</a></li>
+          </ul>
+        </li>
+        <li *ngIf="isCompanyConfigured"><a>Benefícios</a></li>
+        <li *ngIf="isCompanyConfigured"><a>Áreas</a></li>
+        <li *ngIf="isCompanyConfigured"><a>Cargos</a></li>
+        <li *ngIf="isCompanyConfigured"><a>Filiais</a></li>
+        <li *ngIf="isCompanyConfigured"><a>Config. de sistema</a></li>
+      </ul>
+      <ul class="secondary-menu">
+        <li><a>Vagas</a></li>
+        <li><a>Gestão de vagas</a></li>
+        <li><a>Usuários</a></li>
+        <li><a>Meu perfil</a></li>
+        <li><a>Todos os usuários</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="content-area">
+    <header class="navbar">
+      <div class="breadcrumbs">Configurações / Empresa</div>
+      <div class="user-info">
+        <span>{{ userName }}</span>
+        <i class="fas fa-caret-down"></i> </div>
+    </header>
+
+    <main class="main-content">
+      <div class="welcome-card" *ngIf="!isCompanyConfigured">
+        <h1>Olá, {{ userName }}. Seja bem-vindo</h1>
+        <p>É necessário configurar a empresa matriz para visualizar todas as informações do sistema.</p>
+        <button class="btn-primary" (click)="startConfiguration()">INICIAR CONFIGURAÇÃO</button>
+        <div class="illustration">
+          <img src="assets/welcome-illustration.png" alt="Ilustração de boas-vindas">
+        </div>
+      </div>
+      <div class="welcome-card" *ngIf="isCompanyConfigured">
+        <h1>Sua empresa está configurada!</h1>
+        <p>Explore as opções do menu lateral para gerenciar seu RH.</p>
+        <button class="btn-primary" routerLink="/company-details">VER DETALHES DA EMPRESA</button>
+      </div>
+    </main>
+  </div>
+</div>

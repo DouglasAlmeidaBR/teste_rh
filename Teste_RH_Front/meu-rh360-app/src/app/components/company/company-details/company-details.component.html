@@ -1,0 +1,69 @@
+<div class="company-details-container">
+  <div class="header">
+    <h2>EMPRESA</h2>
+    <div class="actions">
+      <button class="btn btn-action"><i class="fas fa-edit"></i> Editar empresa</button>
+      <button class="btn btn-action"><i class="fas fa-sitemap"></i> Gestão de filiais</button>
+      <button class="btn btn-action"><i class="fas fa-money-bill-wave"></i> Faixas salariais</button>
+      <button class="btn btn-action"><i class="fas fa-briefcase"></i> Job Level</button>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading-message">
+    Carregando dados da empresa...
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="companyData" class="company-info-card">
+    <div class="info-group">
+      <div class="info-item">
+        <label>Nome da empresa</label>
+        <p>{{ companyData.companyName }}</p>
+      </div>
+      <div class="info-item">
+        <label>CNPJ da empresa</label>
+        <p>{{ companyData.documentNumber }}</p>
+      </div>
+      <div class="info-item">
+        <label>Nome do administrador</label>
+        <p>{{ companyData.administratorName }}</p>
+      </div>
+    </div>
+
+    <div class="info-group">
+      <div class="info-item">
+        <label>CPF administrador</label>
+        <p>{{ companyData.administratorDocumentNumber }}</p>
+      </div>
+      <div class="info-item">
+        <label>E-mail</label>
+        <p>{{ companyData.email }}</p>
+      </div>
+      <div class="info-item">
+        <label>Telefone</label>
+        <p>{{ companyData.mobilePhone }}</p>
+      </div>
+    </div>
+
+    <div class="info-group">
+      <div class="info-item">
+        <label>CEP</label>
+        <p>{{ companyData.address?.zipCode }}</p>
+      </div>
+    </div>
+
+    <div class="info-group full-width-address">
+      <div class="info-item full-width">
+        <label>Endereço</label>
+        <p>
+          {{ companyData.address?.address }}
+          <span *ngIf="companyData.address?.addressComplement">, {{ companyData.address?.addressComplement }}</span>,
+          {{ companyData.address?.neighborhood }}, {{ companyData.address?.city }} - {{ companyData.address?.state }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

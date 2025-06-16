@@ -1,0 +1,93 @@
+<div class="register-container">
+  <div class="background-image">
+    <div class="quote-section">
+      <blockquote>
+        <p>"10+ clientes satisfeitos"</p>
+        <p>"Meu RH 360 é a solução perfeita para gerenciamento de pessoas e processos de contratação. Ele facilita o básico de novos talentos e ajuda a manter o equipe organizada e bem gerenciada. Além disso, o suporte é excepcional e sempre disposto a ajudar."</p>
+        <cite>- Empresa Lorem Ipsum</cite>
+      </blockquote>
+    </div>
+  </div>
+  <div class="form-section">
+    <div class="logo">
+    </div>
+    <h2>Crie uma conta profissional</h2>
+    <p>Preencha seus dados para ter acesso</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="fullName">Nome completo</label>
+        <input type="text" id="fullName" formControlName="fullName" placeholder="Digite seu nome completo"
+               [ngClass]="{ 'is-invalid': submitted && f['fullName'].errors }">
+        <div *ngIf="submitted && f['fullName'].errors" class="invalid-feedback">
+          <div *ngIf="f['fullName'].errors['required']">Nome completo é obrigatório.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" formControlName="email" placeholder="Digite seu e-mail cadastrado / ex: email@gmail.com"
+               [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+          <div *ngIf="f['email'].errors['required']">E-mail é obrigatório.</div>
+          <div *ngIf="f['email'].errors['email']">E-mail inválido.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="service">Serviço</label>
+        <input type="text" id="service" formControlName="service" placeholder="Digite uma contratação"
+               [ngClass]="{ 'is-invalid': submitted && f['service'].errors }">
+        <div *ngIf="submitted && f['service'].errors" class="invalid-feedback">
+          <div *ngIf="f['service'].errors['required']">Serviço é obrigatório.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input type="password" id="password" formControlName="password" placeholder="Digite a senha"
+               [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+          <div *ngIf="f['password'].errors['required']">Senha é obrigatória.</div>
+          <div *ngIf="f['password'].errors['minlength']">Senha deve ter no mínimo 6 caracteres.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirmação de senha</label>
+        <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Repita a senha"
+               [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }">
+        <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
+          <div *ngIf="f['confirmPassword'].errors['required']">Confirmação de senha é obrigatória.</div>
+          <div *ngIf="f['confirmPassword'].errors['mustMatch']">Senhas não conferem.</div>
+        </div>
+      </div>
+
+      <div class="form-group form-check">
+        <input type="checkbox" id="acceptTerms" formControlName="acceptTerms" class="form-check-input"
+               [ngClass]="{ 'is-invalid': submitted && f['acceptTerms'].errors }">
+        <label class="form-check-label" for="acceptTerms">Eu li e aceito os <a href="#">Termos e Condições</a> e <a href="#">Política de Privacidade</a></label>
+        <div *ngIf="submitted && f['acceptTerms'].errors" class="invalid-feedback">
+          <div *ngIf="f['acceptTerms'].errors['requiredTrue']">Você deve aceitar os termos.</div>
+        </div>
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+
+      <button type="submit" [disabled]="loading" class="btn-primary">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Cadastrar
+      </button>
+    </form>
+
+    <div class="login-link">
+      Já tem uma conta? <a routerLink="/">Entrar</a>
+    </div>
+
+    <div class="footer-text">
+      &copy; 2024 Meu RH360
+    </div>
+  </div>
+</div>
